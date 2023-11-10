@@ -3,6 +3,7 @@ import { shuffle } from '@/utils'
 import Image from 'next/image'
 import YAML from 'yaml'
 
+export const dynamic = 'force-dynamic'
 export default async function Home() {
   const tweetsResponse = await fetch(`${process.env.BASE_URL}/tweets.yaml`)
   const tweets = YAML.parse(await tweetsResponse.text()).filter(_ => !_.is_reply)
