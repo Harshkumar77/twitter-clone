@@ -4,6 +4,8 @@ import { getUsers, impressionFormater, popularProfile } from '@/utils'
 import Image from 'next/image'
 import YAML from 'yaml'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Page() {
   const users = await getUsers()
   return <ProfileSearchPage users={popularProfile(users)} />

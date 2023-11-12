@@ -3,6 +3,9 @@ import { getTweets, getUsers, impressionFormater } from '@/utils'
 import Image from 'next/image'
 import YAML from 'yaml'
 
+
+export const dynamic = 'force-dynamic'
+
 export default async function Page({ params }) {
   const users = await getUsers()
   const tweets = await getTweets()
