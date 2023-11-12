@@ -1,13 +1,11 @@
 import TweetBasic from '@/components/TweetBasic'
-import { impressionFormater } from '@/utils'
+import { getTweets, getUsers, impressionFormater } from '@/utils'
 import Image from 'next/image'
 import YAML from 'yaml'
 
 export default async function Page({ params }) {
-  const usersResponse = await fetch(`${process.env.BASE_URL}/users.yaml`)
-  const users = YAML.parse(await usersResponse.text())
-  const tweetsResponse = await fetch(`${process.env.BASE_URL}/tweets.yaml`)
-  const tweets = YAML.parse(await tweetsResponse.text())
+  const users = await getUsers()
+  const tweets = await getTweets()
   let user = users.filter(_ => _.username == params.slug)[0]
   if (!user)
     return <p>User doesn't extended</p>
